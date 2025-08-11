@@ -18,6 +18,7 @@ import InstagramFeed from "@/src/components/instagram-feed"
 import ContactForm from "@/src/components/contact-form"
 import "@/src/app/shree.css"
 import Element3D from "@/src/components/elements/element3D"
+import HeroVid from "../components/elements/hero-vid"
 
 const serif = Playfair_Display({
   subsets: ["latin"],
@@ -92,15 +93,8 @@ export default function Page() {
       {/* Hero Section */}
       <section ref={heroRef} id="hero" className="relative min-h-screen w-full overflow-hidden">
         {/* Video background: replace /videos/hero.mp4 with your artisan video */}
-        <video
-          className="absolute inset-0 w-full h-full object-cover"
-          src="/video/111.mp4"
-          autoPlay
-          loop
-          muted
-          playsInline 
-        />
-        {/* Soft overlay gradient */}
+        <HeroVid />
+        {/* className="absolute inset-0 w-full h-full object-cover" Soft overlay gradient */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/50 to-black/25" />
         {/* Subtle pattern overlay */}
         <div
