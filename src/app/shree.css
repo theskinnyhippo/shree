@@ -1,0 +1,151 @@
+:root {
+  --gold: #ffd700;
+  --vermillion: #a91515;
+  --offwhite: #f5f5f5;
+  --brass: #b08d57;
+  --shadow-gold: 0 10px 30px rgba(255, 215, 0, 0.18);
+}
+
+/* Buttons */
+.btn-gold {
+  @apply inline-flex items-center justify-center rounded-md px-5 py-2.5 font-medium text-neutral-900;
+  background: linear-gradient(135deg, var(--gold), var(--brass));
+  box-shadow: 0 6px 24px rgba(255, 215, 0, 0.35);
+  border: 1px solid rgba(255, 215, 0, 0.55);
+  transition: transform 200ms ease, box-shadow 200ms ease, filter 200ms ease;
+}
+.btn-gold:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 28px rgba(255, 215, 0, 0.45);
+  filter: brightness(1.03);
+}
+.btn-outline-brass {
+  @apply inline-flex items-center justify-center rounded-md px-5 py-2.5 font-medium;
+  color: var(--vermillion);
+  border: 1px solid rgba(176, 141, 87, 0.6);
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.2));
+  backdrop-filter: blur(4px);
+  transition: transform 200ms ease, box-shadow 200ms ease, border-color 200ms ease;
+}
+.btn-outline-brass:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 18px rgba(176, 141, 87, 0.25);
+  border-color: rgba(255, 215, 0, 0.7);
+}
+
+/* Nav link */
+.nav-link {
+  @apply text-sm text-neutral-700;
+  position: relative;
+}
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -6px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 250ms ease;
+}
+.nav-link:hover {
+  color: var(--vermillion);
+}
+.nav-link:hover::after {
+  transform: scaleX(1);
+}
+
+/* Gold animated line (footer & separators) */
+.gold-line {
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  filter: drop-shadow(0 0 12px rgba(255, 215, 0, 0.5));
+  animation: shimmer 3s linear infinite;
+}
+.gold-line--slow {
+  animation-duration: 6s;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
+}
+
+/* Shadows */
+.shadow-gold {
+  box-shadow: var(--shadow-gold);
+}
+.shadow-hover-gold {
+  transition: box-shadow 300ms ease;
+}
+.shadow-hover-gold:hover {
+  box-shadow: 0 14px 38px rgba(255, 215, 0, 0.25);
+}
+
+/* Badges */
+.badge-brass {
+  @apply inline-flex items-center rounded-full px-3 py-1 text-xs;
+  background: rgba(255, 215, 0, 0.1);
+  border: 1px solid rgba(255, 215, 0, 0.35);
+  color: var(--vermillion);
+}
+
+/* Icon button */
+.icon-btn {
+  @apply h-9 w-9 rounded-full flex items-center justify-center border;
+  border-color: rgba(176, 141, 87, 0.5);
+  background: white;
+  transition: transform 200ms ease, box-shadow 200ms ease, border-color 200ms ease;
+}
+.icon-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 18px rgba(176, 141, 87, 0.25);
+  border-color: rgba(255, 215, 0, 0.7);
+}
+
+/* Footer links/titles */
+.footer-title {
+  @apply text-sm uppercase tracking-wider text-neutral-700;
+  font-family: var(--font-serif);
+}
+.footer-link {
+  @apply text-neutral-600 hover:text-neutral-800;
+}
+
+/* Floating labels */
+.field {
+  position: relative;
+}
+.input {
+  @apply w-full rounded-md;
+  padding-top: 1.4rem; /* space for label */
+}
+.floating-label {
+  position: absolute;
+  top: 0.9rem;
+  left: 0.8rem;
+  font-size: 0.8rem;
+  color: #6b7280;
+  pointer-events: none;
+  transition: all 0.2s ease;
+  background: linear-gradient(to bottom, transparent 40%, white 40%);
+  padding: 0 0.25rem;
+}
+.input:focus + .floating-label,
+.input:not(:placeholder-shown) + .floating-label,
+.field :is(textarea).input:focus + .floating-label,
+.field :is(textarea).input:not(:placeholder-shown) + .floating-label {
+  transform: translateY(-0.85rem) scale(0.9);
+  color: var(--vermillion);
+}
+
+/* Ensure Input/Textarea show placeholder to trigger CSS logic */
+.input::placeholder {
+  color: transparent;
+}
